@@ -141,7 +141,7 @@ const studentUploadFile = async (req, res) => {
     return res.status(400).json({ message: "No file uploaded." });
   }
   // Construct the file URL
-  const file = `${process.env.BASE_URL}/Student/uploadFile/${req.file.filename}`;
+  const file = req.file.path; // Cloudinary URL
   res.status(200).json({ file, message: "File uploaded successfully." });
 };
 
