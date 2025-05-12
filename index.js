@@ -47,15 +47,6 @@ mongoose
 
 app.use("/", Routes);
 
-// // // Serve static files for downloads
-app.use(
-  "/Teacher/uploadFile",
-  express.static(path.join(__dirname, "uploads/teachers"))
-);
-app.use(
-  "/Student/uploadFile",
-  express.static(path.join(__dirname, "uploads/students"))
-);
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     console.log(err.message);

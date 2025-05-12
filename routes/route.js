@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const upload = require("../middleware/TeacherMulter.js");
 
 const {
   adminRegister,
