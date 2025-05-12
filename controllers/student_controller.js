@@ -142,6 +142,7 @@ const studentUploadFile = async (req, res) => {
   }
   // Construct the file URL
   const file = req.file.path; // Cloudinary URL
+  // console.log(req.file);
   res.status(200).json({ file, message: "File uploaded successfully." });
 };
 

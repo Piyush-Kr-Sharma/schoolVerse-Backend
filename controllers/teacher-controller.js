@@ -272,6 +272,7 @@ const teacherUploadFile = async (req, res) => {
   }
   // Construct the file URL
   const fileURL = req.file.path; // Cloudinary URL
+  // console.log(req.file);
   res.status(200).json({ fileURL, message: "File uploaded successfully." });
 };
 
