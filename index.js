@@ -15,11 +15,25 @@ dotenv.config();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: false })); // form data ko parse karne me help karta hai becuase frontend se jo data aa rha hai wo json nhi hai wo ek form data hai
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://school-verse-frontend.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow only frontend running on localhost:3000
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman or curl)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
+    credentials: true,
   })
 );
 
